@@ -135,11 +135,20 @@ export default function PollPage({ params }: { params: { id: string } }) {
         <CardHeader>
           <div className="flex justify-between items-start">
             <CardTitle className="text-2xl">{poll.title}</CardTitle>
-            {poll.isActive ? (
-              <Badge variant="default">Active</Badge>
-            ) : (
-              <Badge variant="outline">Closed</Badge>
-            )}
+            <div className="flex gap-2">
+              <Button 
+                variant="outline" 
+                size="sm" 
+                onClick={() => router.push(`/polls/${poll.id}/edit`)}
+              >
+                Edit
+              </Button>
+              {poll.isActive ? (
+                <Badge variant="default">Active</Badge>
+              ) : (
+                <Badge variant="outline">Closed</Badge>
+              )}
+            </div>
           </div>
           <CardDescription className="text-base">
             {poll.description}
